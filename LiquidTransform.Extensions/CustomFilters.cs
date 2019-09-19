@@ -40,11 +40,19 @@ namespace LiquidTransform.Extensions
 
         public static string Json(Context context, dynamic input)
         {
+            if (input == null)
+            {
+                return null;
+            }
             return JsonConvert.SerializeObject(input, jsonSettings);
         }
 
         public static string Json_nohtml(Context context, dynamic input)
         {
+            if (input == null)
+            {
+                return null;
+            }
             return JsonConvert.SerializeObject(input, jsonNoHtmlSettings);
         }
     }
