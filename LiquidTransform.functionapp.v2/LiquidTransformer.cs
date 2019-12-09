@@ -1,14 +1,13 @@
+using DotLiquid;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Extensions.Logging;
+using System;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using DotLiquid;
 using System.Text;
-using System;
-using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
 namespace LiquidTransform.functionapp.v2
 {
@@ -24,7 +23,7 @@ namespace LiquidTransform.functionapp.v2
         /// <returns></returns>
         [FunctionName("LiquidTransformer")]
         public static async Task<HttpResponseMessage> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "post", Route = "liquidtransformer/{liquidtransformfilename}")] HttpRequestMessage req,
+            [HttpTrigger(Microsoft.Azure.WebJobs.Extensions.Http.AuthorizationLevel.Function, "post", Route = "liquidtransformer/{liquidtransformfilename}")] HttpRequestMessage req,
             [Blob("liquid-transforms/{liquidtransformfilename}", FileAccess.Read)] Stream inputBlob,
             ILogger log)
         {
